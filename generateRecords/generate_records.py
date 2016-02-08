@@ -12,11 +12,6 @@ functions.generateName()
 # Using bulk indexing API
 #############################################################
 
-'''
-#install Node module cat-names
-os.system("npm install --global cat-names")
-'''
-
 # Use The Cat API to retrieve cat images
 catPic = ('http://thecatapi.com/api/images/get?format=src&type=jpg,gif&size=full')
 
@@ -27,7 +22,7 @@ for each in range(10):
 	catName = functions.generateName()
 	var = ('''
 		curl -XPOST "localhost:9200/shelter/cats/_bulk
-		{"index":{"_id":'%d'}}
+		{"index":{"_id":"%d"}}
 		{"name":"%s","description":"%s","image":"%s"}
 		''') % (i, catName, description, catPic)
 	i += 1
