@@ -26,7 +26,7 @@ for each in range(10):
 		{"name":"%s","description":"%s","image":"%s"}
 		''') % (i, catName, description, catPic)
 	i += 1
-	print(var)
+	os.system(var)
 	
 
 # Process complete message
