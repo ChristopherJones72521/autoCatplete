@@ -21,9 +21,7 @@ i = 0
 for each in range(10):
 	description = functions.catIpsum()
 	catName = functions.generateName()
-	payload = ''' 
-		{'name':'%s','description':'%s','image':'%s'}
-		''' % (catName, description, catPic)
+	payload = json.dumps({'name':'%s','description':'%s','image':'%s'}) % (catName, description, catPic)
 	url = "http://localhost:9200/shelter/cats/"+str(i)
 	var = requests.put(url, data = payload)
 	i += 1
