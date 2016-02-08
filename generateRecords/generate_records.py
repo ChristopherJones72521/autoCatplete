@@ -29,7 +29,7 @@ for each in range(10):
 	
 # Process complete message
 request = Request('http://placekitten.com/')
-'''
+
 try:
 	print "Process complete"
 	response = urlopen(request)
@@ -37,4 +37,3 @@ try:
 	print kittens[559:1000]
 except URLError, e:
     print 'No kittez. Got an error code:', e
-'''

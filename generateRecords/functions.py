@@ -4,11 +4,11 @@ import os
 
 def catIpsum():
 	# Create catIpsum list for cat description. Split on comma and randomly return 4 index values.
-	catIpsumVar = '''[Shove bum in owner's face like camera lens gnaw the corn cob unwrap toilet paper, 
-	Kitty loves pigs pee in human's bed until he cleans the litter box steal the warm chair right after you get up,
+	catIpsumVar = '''[Shove bum in owners face like camera lens gnaw the corn cob unwrap toilet paper, 
+	Kitty loves pigs pee in humans bed until he cleans the litter box steal the warm chair right after you get up,
 	for chew foot See owner run in terror meow or curl into a furry donut and chirp at birds but claw drapes, 
 	for burrow under covers. Stick butt in face scream at teh bath but curl into a furry donut. Meow., 
-	Curl into a furry donut swat turds around the house pee in human's bed until he cleans the litter box., 
+	Curl into a furry donut swat turds around the house pee in humans bed until he cleans the litter box., 
 	Stretch destroy couch as revenge yet attack dog, run away and pretend to be victim., 
 	Throwup on your pillow. Under the bed sit by the fire or asdflkjaertvlkjasntvkjn (sits on keyboard)., 
 	Chew on cable. Burrow under covers. Has closed eyes but still sees you sweet beast jump off balcony, 
