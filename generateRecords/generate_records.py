@@ -1,7 +1,7 @@
 #!/usr/bin/python
 import os
 import random
-import json
+import requests
 import functions
 from urllib2 import Request, urlopen, URLError
 
@@ -20,21 +20,21 @@ i = 0
 for each in range(10):
 	description = functions.catIpsum()
 	catName = functions.generateName()
-	var = '''
-		curl -XPOST "localhost:9200/shelter/cats/_bulk -d
+	payload = ''' 
 		{'index':{'_id':'%d'}}
 		{'name':'%s','description':'%s','image':'%s'}
-		"''' % (i, catName, description, catPic)
+		''' % (i, catName, description, catPic)
+	var = requests.post("http://localhost:9200/shelter/cats/_bulk", data = payload)
 	i += 1
-	os.system(var)
 	
-
 # Process complete message
 request = Request('http://placekitten.com/')
-
+'''
 try:
+	print "Process complete"
 	response = urlopen(request)
 	kittens = response.read()
 	print kittens[559:1000]
 except URLError, e:
     print 'No kittez. Got an error code:', e
+'''
