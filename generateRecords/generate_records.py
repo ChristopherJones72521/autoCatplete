@@ -3,6 +3,7 @@ import os
 import random
 import requests
 import functions
+import json
 from urllib2 import Request, urlopen, URLError
 
 functions.generateName()
@@ -21,10 +22,10 @@ for each in range(10):
 	description = functions.catIpsum()
 	catName = functions.generateName()
 	payload = ''' 
-		{'index':{'_id':'%d'}}
 		{'name':'%s','description':'%s','image':'%s'}
-		''' % (i, catName, description, catPic)
-	var = requests.post("http://localhost:9200/shelter/cats/_bulk", data = payload)
+		''' % (catName, description, catPic)
+	url = "http://localhost:9200/shelter/cats/"+str(i)
+	var = requests.put(url, data = payload)
 	i += 1
 	
 # Process complete message
