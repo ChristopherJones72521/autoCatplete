@@ -20,11 +20,11 @@ i = 0
 for each in range(10):
 	description = functions.catIpsum()
 	catName = functions.generateName()
-	var = ('''
-		curl -XPOST "localhost:9200/shelter/cats/_bulk
-		{"index":{"_id":"%d"}}
-		{"name":"%s","description":"%s","image":"%s"}
-		''') % (i, catName, description, catPic)
+	var = '''
+		curl -XPOST "localhost:9200/shelter/cats/_bulk -d
+		{'index':{'_id':'%d'}}
+		{'name':'%s','description':'%s','image':'%s'}
+		"''' % (i, catName, description, catPic)
 	i += 1
 	os.system(var)
 	
