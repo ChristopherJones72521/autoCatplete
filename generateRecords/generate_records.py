@@ -18,7 +18,7 @@ catPic = ('http://thecatapi.com/api/images/get?format=src&type=jpg,gif&size=full
 
 # Begin entering records # run the record entry query 3,000,000 times. 
 i = 0
-for each in range(10):
+for each in range(100):
 	description = functions.catIpsum()
 	catName = functions.generateName()
 	payload = json.dumps({'name':catName,'description':description,'image':catPic})

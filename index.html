@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Second attmept at autoComplete system</title>
+	<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.1/themes/ui-darkness/jquery-ui.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+</head>
+<body>
+<h1>What is the name of the cat you want to adopt?</h1>
+<input id="search" type='text'>
+
+	<script>
+	$(function() {
+            $("#search").autocomplete({
+                source: function(request, response) {
+                    var structure = { "name": request.term.toLowerCase() };
+                    var postData = {
+                        "query": { "structure": structure },
+                        "fields": ["name", "description"]
+                    };
+                    someData = JSON.stringify(postData);
+                    $.ajax({
+                        url: 'http://localhost:9200/shelter/cats/_search',
+                        processData: someData,
+                        type: "POST",
+                        success: function(data) {
+                            response($.map(data.hits.hits, function(item) {
+                                return {
+                                    label: item._source.name,
+                                    id: item._source.description
+                                }
+                            }));
+                        },
+                    });
+                },
+                minLength: 1
+            })
+        });
+	</script>
+</body>
+</html>
