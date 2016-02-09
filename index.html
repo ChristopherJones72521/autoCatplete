@@ -16,9 +16,8 @@
 	$(function() {
             $("#search").autocomplete({
                 source: function(request, response) {
-                    var structure = { "name": request.term.toLowerCase() };
                     var postData = {
-                        "query": { "structure": structure },
+                        "match_phrase_prefix": { "name": request.term.toLowerCase() },
                         "fields": ["name", "description"]
                     };
                     someData = JSON.stringify(postData);
