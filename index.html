@@ -16,21 +16,18 @@
 	$(function() {
             $("#search").autocomplete({
                 source: function(request, response) {
-                    var postData = {
-                        "match_phrase_prefix": { "name": request.term.toLowerCase() },
-                        "fields": ["name", "description"]
-                    };
+                    var postData = { "query": { "match_phrase_prefix": { "name": request.term.toLowerCase() } } };
                     someData = JSON.stringify(postData);
                     $.ajax({
-                        url: 'http://localhost:9200/shelter/cats/_search',
-                        processData: someData,
+                        url: 'http://localhost:9200/shelter/_search?pretty',
+                        data: someData,
                         type: "POST",
                         success: function(data) {
                             response($.map(data.hits.hits, function(item) {
                                 return {
                                     label: item._source.name,
                                     id: item._source.description
-                                }
+                                }                                
                             }));
                         },
                     });
